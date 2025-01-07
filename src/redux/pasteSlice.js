@@ -27,4 +27,4 @@ export const pasteSlice = createSlice({
 
 export const { addToPastes, updateToPastes, resetAllPastes, removeFromPastes } = pasteSlice.actions
 
-export default counterSlice.reducer
+export default pasteSlice.reducer
