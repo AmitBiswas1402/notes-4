@@ -2,11 +2,18 @@ import { NavLink } from "react-router-dom"
 
 const Navbar = () => {
   return (
-    <div>
-      <NavLink>
+    <div className="flex flex-row gap-4">
+      <NavLink
+        to="/"
+      >
         Home
       </NavLink>
-      
+
+      <NavLink
+        to="/pastes"
+      >
+        Pastes
+      </NavLink>
     </div>
   )
 }
