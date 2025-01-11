@@ -6,9 +6,9 @@ import { addToPastes, updateToPastes } from "../redux/pasteSlice";
 const Home = () => {
   const [title, setTitle] = useState("");
   const [value, setValue] = useState("");
-  const [searchParamas, setsearchParamas] = useSearchParams();
+  const [searchParamas, setSearchParamas] = useSearchParams();
   const pasteId = searchParamas.get("pasteId");
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   function createMyPaste() {
     const paste = {
@@ -16,20 +16,20 @@ const Home = () => {
       content: value,
       _id: pasteId || Date.now().toString(36),
       createdAt: new Date().toISOString(),
-    }
+    };
 
     if (pasteId) {
       //update
-      dispatch(updateToPastes(paste))      
+      dispatch(updateToPastes(paste));
     } else {
       //create
-      dispatch(addToPastes(paste))      
+      dispatch(addToPastes(paste));
     }
 
     //after create or update
     setTitle("");
     setValue("");
-    setsearchParamas({})
+    setSearchParamas({});
   }
 
   return (
@@ -49,7 +49,13 @@ const Home = () => {
       </div>
 
       <div className="mt-8">
-        <textarea className="rounded-2xl mt-4 min-w-[500px] p-4" value={value} placeholder="enter content here" onChange={(e) => setValue(e.target.value)} />
+        <textarea
+          className="rounded-2xl mt-4 min-w-[500px] p-4"
+          value={value}
+          placeholder="enter content here"
+          onChange={(e) => setValue(e.target.value)}
+          rows={20}
+        />
       </div>
     </div>
   );
