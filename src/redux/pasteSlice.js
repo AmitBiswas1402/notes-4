@@ -8,7 +8,7 @@ const initialState = {
 }
 
 export const pasteSlice = createSlice({
-  name: 'paste',
+  name: "paste",
   initialState,
   reducers: {
     addToPastes: (state, action) => {
