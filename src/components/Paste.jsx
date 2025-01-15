@@ -1,4 +1,5 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 
 const Paste = () => {
@@ -29,7 +30,7 @@ const Paste = () => {
         {filteredData.length > 0 &&
           filteredData.map((paste) => {
             return (
-            <div className="border">
+            <div className="border" key={paste._id}>
               <div className="">
                 {paste.title}
               </div>
@@ -38,15 +39,21 @@ const Paste = () => {
               </div>
               <div className="flex flex-row gap-4 place-content-evenly">
                 <button>
-                  Edit
+                  <a href={`/?pasteId=${paste?._id}`} >
+                    Edit
+                  </a>
                 </button>
                 <button>
-                  View 
+                  <a href={`/paste/${paste._id}`} >
+                    View
+                  </a>
                 </button>
                 <button onClick={() =>handleDelete(paste?._id)}>
                   Delete 
                 </button>
-                <button onClick={handleCopy}>
+                <button onClick={ ()=> {navigator.clipboard.writeText(paste?.content)
+                  toast.success("Copied to clipboard")
+                }}>
                   Copy 
                 </button>
                 <button>
